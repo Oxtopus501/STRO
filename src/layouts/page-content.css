@@ -1,0 +1,23 @@
+.page-content {
+  margin: 0 32px;
+}
+
+.page-content__text {
+  color: #fff;
+  max-width: 420px;
+  line-height: 32px;
+  font-size: 24px;
+}
+
+@media screen and (max-width: 479px) {
+  .page-content {
+    margin: 0 12px;
+  }
+
+  .page-content__text {
+    color: #fff;
+    line-height: 28px;
+    font-size: 20px;
+    margin: 12px 0;
+  }
+}

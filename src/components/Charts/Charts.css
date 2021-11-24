@@ -1,0 +1,7 @@
+.charts {
+}
+
+.charts__header {
+  display: flex;
+  margin-bottom: 12px;
+}

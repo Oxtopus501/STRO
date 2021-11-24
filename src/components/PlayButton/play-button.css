@@ -1,0 +1,33 @@
+.track-tile__play-button {
+  height: 40px;
+  width: 70px;
+  background-color: #362752;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 8px;
+}
+
+.track-tile__play-button:hover {
+  background-color: #f00;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 479px) {
+  .track-tile__play-button {
+    height: 28px;
+    width: 52px;
+    background-color: #362752;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 4px;
+  }
+
+  .track-tile__play-icon {
+    height: 12px;
+    width: 12px;
+  }
+}

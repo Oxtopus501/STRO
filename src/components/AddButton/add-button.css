@@ -1,0 +1,48 @@
+.track-tile__add-button {
+  height: 40px;
+  width: 40px;
+  background-color: #362752;
+  border-radius: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  color: #fff;
+}
+
+.track-tile__add-button-text {
+  font-size: 32px;
+  vertical-align: middle;
+  line-height: 40px;
+}
+
+.track-tile__add-button:hover {
+  background-color: #fff700;
+  color: #362752;
+  cursor: pointer;
+}
+
+.track-tile__svg {
+  fill: #fff;
+  width: 100%;
+  height: 100%;
+  padding: 2px;
+}
+
+.track-tile__svg:hover {
+  fill: #362752;
+}
+
+@media screen and (max-width: 479px) {
+  .track-tile__add-button {
+    height: 28px;
+    width: 28px;
+    background-color: #362752;
+    border-radius: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    color: #fff;
+  }
+}

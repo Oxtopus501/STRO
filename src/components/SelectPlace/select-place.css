@@ -1,0 +1,10 @@
+.select-place {
+  background-color: #221934;
+  border: none;
+  border-radius: 4px;
+  color: #fff;
+  height: 40px;
+  width: 120px;
+  position: relative;
+  top: -1px;
+}
