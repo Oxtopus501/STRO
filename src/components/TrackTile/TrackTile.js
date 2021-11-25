@@ -1,10 +1,16 @@
 import React from "react";
 
+import { useAddedTracksContext } from "../../App/App";
 import AddButton from "../AddButton/AddButton";
 import PlayButton from "../PlayButton/PlayButton";
 import "./track-tile.css";
 
 function TrackTile(props) {
+  //const addedTracksContext = useAddedTracksContext();
+  function handleAddClick() {
+    // eslint-disable-next-line no-console
+    //console.log(props.id);
+  }
   return (
     <div className="track-tile">
       <div className="track-tile__place">#{props.place}</div>
@@ -15,10 +21,10 @@ function TrackTile(props) {
       </div>
       <div className="track-tile__buttons-container">
         <PlayButton title={props.title} author={props.author} />
-        <AddButton />
+        <AddButton onClick={handleAddClick} />
       </div>
     </div>
   );
 }
 
-export default React.memo(TrackTile);
+export default TrackTile;

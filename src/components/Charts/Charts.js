@@ -19,14 +19,9 @@ export const useCityContext = () => React.useContext(CityContext);
 function Charts() {
   const [trackList, setTrackList] = React.useState([]); //Трэклист для рендера
   const [city, setCity] = React.useState(idListArray[0]); //Город выбирается в SelectPlace, по умолчанию Москва
-  const [cityLabel, setCityLabel] = React.useState(); //Подпись города в TrackTile
   function handleClickSearch() {
     getChart(city.id);
   }
-  //Зависимость упущена намеренно, подпись города поиска меняется при смене трэклиста, а не при смене города
-  React.useEffect(() => {
-    setCityLabel(city.label);
-  }, [trackList]);
   //Запрос к Shazam API по id города и обновление trackList ответом от сервера
   function getChart(listId) {
     fetch(
@@ -42,7 +37,13 @@ function Charts() {
     )
       .then((response) => response.json())
       .then((data) => {
-        setTrackList([...data.tracks]);
+        const newTracks = data.tracks.map((track) => {
+          track.city = city.label;
+          return track;
+        });
+        // eslint-disable-next-line no-console
+        console.log(newTracks);
+        setTrackList([...newTracks]);
       });
   }
 
@@ -58,10 +59,11 @@ function Charts() {
               return (
                 <TrackTile
                   key={track.key}
+                  id={track.key}
                   title={track.title}
                   place={index + 1}
                   author={track.subtitle}
-                  city={cityLabel}
+                  city={track.city}
                 />
               );
             })

@@ -2,9 +2,13 @@ import React from "react";
 
 import "./add-button.css";
 
-function AddButton() {
+function AddButton(props) {
+  const handleClickAdd = () => {
+    // eslint-disable-next-line no-console
+    console.log("Иди на хуй");
+  };
   return (
-    <button className="track-tile__add-button">
+    <button className="track-tile__add-button" onClick={props.onClick}>
       <svg
         className="track-tile__svg"
         xmlns="http://www.w3.org/2000/svg"
@@ -20,4 +24,4 @@ function AddButton() {
   );
 }
 
-export default React.memo(AddButton);
+export default AddButton;

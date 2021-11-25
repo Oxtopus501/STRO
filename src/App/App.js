@@ -32,7 +32,7 @@ function App() {
   });
 
   return (
-    <Provider>
+    <Provider value={{ addedTracks, setAddedTracks }}>
       <div className="app">
         <Header />
         <section className="page-content">
