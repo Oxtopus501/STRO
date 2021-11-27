@@ -1,5 +1,6 @@
 import React from "react";
 
+import { useAddedTracksContext } from "../../App/App";
 import idListArray from "../../utils/idListArray";
 import SearchButton from "../SearchButton/SearchButton";
 import SearchIcon from "../SearchIcon/SearchIcon";
@@ -7,18 +8,23 @@ import SelectPlace from "../SelectPlace/SelectPlace";
 import TrackTile from "../TrackTile/TrackTile";
 import "./Charts.css";
 
-const CityContext = React.createContext({
+const ChartsContext = React.createContext({
   city: idListArray[0],
   setCity: () => {},
+  trackList: [],
+  setTrackList: () => {},
 });
 
-const Provider = CityContext.Provider;
+const Provider = ChartsContext.Provider;
 
-export const useCityContext = () => React.useContext(CityContext);
+export const useChartsContext = () => React.useContext(ChartsContext);
 
 function Charts() {
   const [trackList, setTrackList] = React.useState([]); //Трэклист для рендера
   const [city, setCity] = React.useState(idListArray[0]); //Город выбирается в SelectPlace, по умолчанию Москва
+
+  const addedTracksContext = useAddedTracksContext();
+
   function handleClickSearch() {
     getChart(city.id);
   }
@@ -39,6 +45,15 @@ function Charts() {
       .then((data) => {
         const newTracks = data.tracks.map((track) => {
           track.city = city.label;
+          if (
+            addedTracksContext.addedTracks.some((addedTrack) => {
+              return addedTrack.key === track.key;
+            })
+          ) {
+            track.added = true;
+          } else {
+            track.added = false;
+          }
           return track;
         });
         // eslint-disable-next-line no-console
@@ -48,7 +63,7 @@ function Charts() {
   }
 
   return (
-    <Provider value={{ city, setCity }}>
+    <Provider value={{ city, setCity, trackList, setTrackList }}>
       <>
         <div className="charts__header">
           <SelectPlace />

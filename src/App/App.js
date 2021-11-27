@@ -17,19 +17,24 @@ const Provider = AddedTracksContext.Provider;
 export const useAddedTracksContext = () => React.useContext(AddedTracksContext);
 
 function App() {
-  const [addedTracks, setAddedTracks] = React.useState([]);
-  React.useEffect(() => {
-    if (localStorage.getItem("addedTracks")) {
-      setAddedTracks(addedTracks);
-    } else {
-      localStorage.setItem("addedTracks", addedTracks);
-    }
-  }, [addedTracks]);
-
+  /*Первым значением состояния с добавленными треками становится значение из localStorage
+  если такого ключа в localStorage нет, значением становится null, 
+  тогда в useEffect присвоим ему пустой массив*/
+  const [addedTracks, setAddedTracks] = React.useState(
+    JSON.parse(localStorage.getItem("addedTracks"))
+  );
+  //После каждого обновления добавленных треков обновляем localStorage
   React.useEffect(() => {
     // eslint-disable-next-line no-console
-    console.log(localStorage.getItem("addedTracks"));
-  });
+    console.log(addedTracks);
+    localStorage.setItem("addedTracks", JSON.stringify(addedTracks));
+  }, [addedTracks]);
+  //Хук, проверяющий addedTrack на null
+  React.useEffect(() => {
+    if (addedTracks === null) {
+      setAddedTracks([]);
+    }
+  }, []);
 
   return (
     <Provider value={{ addedTracks, setAddedTracks }}>

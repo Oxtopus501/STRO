@@ -2,15 +2,46 @@ import React from "react";
 
 import { useAddedTracksContext } from "../../App/App";
 import AddButton from "../AddButton/AddButton";
+import { useChartsContext } from "../Charts/Charts";
 import PlayButton from "../PlayButton/PlayButton";
 import "./track-tile.css";
 
 function TrackTile(props) {
-  //const addedTracksContext = useAddedTracksContext();
+  const addedTracksContext = useAddedTracksContext();
+  const chartsContext = useChartsContext();
+  //Обработчик нажатия кнопки добавить/удалить
   function handleAddClick() {
-    // eslint-disable-next-line no-console
-    //console.log(props.id);
+    const tracksArray = addedTracksContext.addedTracks;
+    //Получаем трек из контекста Charts по ключу
+    const track = chartsContext.trackList.filter((track) => {
+      if (track.key === props.id) {
+        return track;
+      }
+    })[0];
+    //Если трек нашёлся (иного пока не случалось)
+    if (track) {
+      //Добавленный трек удаляем через splice по индексу
+      if (track.added) {
+        let trackToDeleteIndex;
+        tracksArray.forEach((item, index) => {
+          if (item.key === track.key) {
+            trackToDeleteIndex = index;
+          }
+        });
+        tracksArray.splice(trackToDeleteIndex, 1);
+        track.added = false;
+        addedTracksContext.setAddedTracks([...tracksArray]);
+      } else {
+        //не добавленный добавляем
+        track.added = true;
+        addedTracksContext.setAddedTracks([
+          ...addedTracksContext.addedTracks,
+          track,
+        ]);
+      }
+    }
   }
+
   return (
     <div className="track-tile">
       <div className="track-tile__place">#{props.place}</div>

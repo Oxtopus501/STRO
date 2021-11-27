@@ -3,10 +3,6 @@ import React from "react";
 import "./add-button.css";
 
 function AddButton(props) {
-  const handleClickAdd = () => {
-    // eslint-disable-next-line no-console
-    console.log("Иди на хуй");
-  };
   return (
     <button className="track-tile__add-button" onClick={props.onClick}>
       <svg
