@@ -1,18 +1,18 @@
 {
   "files": {
-    "main.css": "/stro/static/css/main.873fd8a6.chunk.css",
-    "main.js": "/stro/static/js/main.0d8be4d6.chunk.js",
-    "main.js.map": "/stro/static/js/main.0d8be4d6.chunk.js.map",
-    "runtime-main.js": "/stro/static/js/runtime-main.953d356f.js",
-    "runtime-main.js.map": "/stro/static/js/runtime-main.953d356f.js.map",
-    "static/js/2.d81468e2.chunk.js": "/stro/static/js/2.d81468e2.chunk.js",
-    "static/js/2.d81468e2.chunk.js.map": "/stro/static/js/2.d81468e2.chunk.js.map",
-    "index.html": "/stro/index.html",
-    "static/css/main.873fd8a6.chunk.css.map": "/stro/static/css/main.873fd8a6.chunk.css.map",
-    "static/js/2.d81468e2.chunk.js.LICENSE.txt": "/stro/static/js/2.d81468e2.chunk.js.LICENSE.txt"
+    "main.css": "/STRO/static/css/main.873fd8a6.chunk.css",
+    "main.js": "/STRO/static/js/main.0d8be4d6.chunk.js",
+    "main.js.map": "/STRO/static/js/main.0d8be4d6.chunk.js.map",
+    "runtime-main.js": "/STRO/static/js/runtime-main.811dbbdf.js",
+    "runtime-main.js.map": "/STRO/static/js/runtime-main.811dbbdf.js.map",
+    "static/js/2.d81468e2.chunk.js": "/STRO/static/js/2.d81468e2.chunk.js",
+    "static/js/2.d81468e2.chunk.js.map": "/STRO/static/js/2.d81468e2.chunk.js.map",
+    "index.html": "/STRO/index.html",
+    "static/css/main.873fd8a6.chunk.css.map": "/STRO/static/css/main.873fd8a6.chunk.css.map",
+    "static/js/2.d81468e2.chunk.js.LICENSE.txt": "/STRO/static/js/2.d81468e2.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.953d356f.js",
+    "static/js/runtime-main.811dbbdf.js",
     "static/js/2.d81468e2.chunk.js",
     "static/css/main.873fd8a6.chunk.css",
     "static/js/main.0d8be4d6.chunk.js"
