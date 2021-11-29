@@ -1,5 +1,7 @@
 import React from "react";
 
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+
 import "./App.css";
 import Bookmark from "../components/Bookmark/Bookmark";
 import Charts from "../components/Charts/Charts";
@@ -38,23 +40,27 @@ function App() {
   }, []);
 
   return (
-    <Provider value={{ addedTracks, setAddedTracks }}>
-      <div className="app">
-        <Header />
-        <section className="page-content">
-          <p className="page-content__text">
-            SoundTracker - это интерфейс Shazam API, где можно посмотреть чарты
-            по городам мира
-          </p>
-          <div className="bookmarks">
-            <Bookmark className="bookmark" text="Смотреть чарты" />
-            <Bookmark className="bookmark" text="Добавленные треки" />
-          </div>
-          <Charts />
-          <Library />
-        </section>
-      </div>
-    </Provider>
+    <BrowserRouter>
+      <Provider value={{ addedTracks, setAddedTracks }}>
+        <div className="app">
+          <Header />
+          <section className="page-content">
+            <p className="page-content__text">
+              SoundTracker - это интерфейс Shazam API, где можно посмотреть
+              чарты по городам мира
+            </p>
+            <div className="bookmarks">
+              <Bookmark className="bookmark" text="Смотреть чарты" />
+              <Bookmark className="bookmark" text="Добавленные треки" />
+            </div>
+            <Routes>
+              <Route exact path="/" element={<Charts />} />
+              <Route path="/library" element={<Library />} />
+            </Routes>
+          </section>
+        </div>
+      </Provider>
+    </BrowserRouter>
   );
 }
 

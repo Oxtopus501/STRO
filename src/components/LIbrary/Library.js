@@ -20,6 +20,7 @@ function Library() {
                 place={index + 1}
                 author={track.subtitle}
                 city={track.city}
+                parent={"library"}
               />
             );
           })

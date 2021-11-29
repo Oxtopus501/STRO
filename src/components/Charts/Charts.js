@@ -79,6 +79,7 @@ function Charts() {
                   place={index + 1}
                   author={track.subtitle}
                   city={track.city}
+                  parent={"charts"}
                 />
               );
             })

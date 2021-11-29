@@ -105,4 +105,8 @@
     margin-left: 8px;
     font-size: 14px;
   }
+
+  .track-tile__title {
+    font-size: 14px;
+  }
 }

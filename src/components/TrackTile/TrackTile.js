@@ -15,11 +15,22 @@ function TrackTile(props) {
     console.log("Click-click");
     const tracksArray = addedTracksContext.addedTracks;
     //Получаем трек из контекста Charts по ключу
-    const track = chartsContext.trackList.filter((track) => {
-      if (track.key === props.id) {
-        return track;
-      }
-    })[0];
+    let track;
+    if (props.parent === "charts") {
+      track = chartsContext.trackList.filter((track) => {
+        if (track.key === props.id) {
+          return track;
+        }
+      })[0];
+    } else {
+      track = addedTracksContext.addedTracks.filter((track) => {
+        if (track.key === props.id) {
+          return track;
+        }
+      })[0];
+    }
+    // eslint-disable-next-line no-console
+    console.log(track);
     //Если трек нашёлся (иного пока не случалось)
     if (track) {
       //Добавленный трек удаляем через splice по индексу
