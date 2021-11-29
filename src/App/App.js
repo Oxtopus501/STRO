@@ -6,6 +6,7 @@ import Charts from "../components/Charts/Charts";
 import Header from "../components/Header/Header";
 import "../layouts/bookmarks.css";
 import "../layouts/page-content.css";
+import Library from "../components/LIbrary/Library";
 
 const AddedTracksContext = React.createContext({
   addedTracks: [],
@@ -50,6 +51,7 @@ function App() {
             <Bookmark className="bookmark" text="Добавленные треки" />
           </div>
           <Charts />
+          <Library />
         </section>
       </div>
     </Provider>

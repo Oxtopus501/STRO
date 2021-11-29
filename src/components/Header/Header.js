@@ -6,8 +6,10 @@ import BurgerButton from "../BurgerButton/BurgerButton";
 function Header() {
   return (
     <header className="header">
-      <h2 className="header__logo">SoundTracker</h2>
-      <BurgerButton />
+      <div className="header__wrapper">
+        <h2 className="header__logo">SoundTracker</h2>
+        <BurgerButton />
+      </div>
     </header>
   );
 }

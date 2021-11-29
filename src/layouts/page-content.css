@@ -1,5 +1,6 @@
 .page-content {
-  margin: 0 32px;
+  max-width: 420px;
+  margin: 0 auto;
 }
 
 .page-content__text {
