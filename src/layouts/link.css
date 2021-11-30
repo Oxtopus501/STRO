@@ -1,0 +1,12 @@
+.link {
+  color: #fff;
+  text-decoration: none;
+}
+
+.link:visited {
+  color: #fff;
+}
+
+.link:hover {
+    color: #fff700;
+}

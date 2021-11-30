@@ -11,8 +11,6 @@ function TrackTile(props) {
   const chartsContext = useChartsContext();
   //Обработчик нажатия кнопки добавить/удалить
   function handleAddClick() {
-    // eslint-disable-next-line no-console
-    console.log("Click-click");
     const tracksArray = addedTracksContext.addedTracks;
     //Получаем трек из контекста Charts по ключу
     let track;
@@ -29,8 +27,6 @@ function TrackTile(props) {
         }
       })[0];
     }
-    // eslint-disable-next-line no-console
-    console.log(track);
     //Если трек нашёлся (иного пока не случалось)
     if (track) {
       //Добавленный трек удаляем через splice по индексу

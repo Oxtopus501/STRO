@@ -56,8 +56,6 @@ function Charts() {
           }
           return track;
         });
-        // eslint-disable-next-line no-console
-        console.log(newTracks);
         setTrackList([...newTracks]);
       });
   }

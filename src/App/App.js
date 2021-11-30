@@ -9,6 +9,7 @@ import Header from "../components/Header/Header";
 import "../layouts/bookmarks.css";
 import "../layouts/page-content.css";
 import Library from "../components/LIbrary/Library";
+import NavMenu from "../components/NavMenu/NavMenu";
 
 const AddedTracksContext = React.createContext({
   addedTracks: [],
@@ -19,6 +20,16 @@ const Provider = AddedTracksContext.Provider;
 
 export const useAddedTracksContext = () => React.useContext(AddedTracksContext);
 
+const BurgerButtonContext = React.createContext({
+  isBurgerButtonActive: false,
+  setIsBurgerButtonActive: () => {},
+});
+
+const BurgerButtonProvider = BurgerButtonContext.Provider;
+
+export const useBurgerButtonContext = () =>
+  React.useContext(BurgerButtonContext);
+
 function App() {
   /*Первым значением состояния с добавленными треками становится значение из localStorage
   если такого ключа в localStorage нет, значением становится null, 
@@ -26,10 +37,9 @@ function App() {
   const [addedTracks, setAddedTracks] = React.useState(
     JSON.parse(localStorage.getItem("addedTracks"))
   );
+  const [isBurgerButtonActive, setIsBurgerButtonActive] = React.useState(false);
   //После каждого обновления добавленных треков обновляем localStorage
   React.useEffect(() => {
-    // eslint-disable-next-line no-console
-    console.log(addedTracks);
     localStorage.setItem("addedTracks", JSON.stringify(addedTracks));
   }, [addedTracks]);
   //Хук, проверяющий addedTrack на null
@@ -42,23 +52,24 @@ function App() {
   return (
     <BrowserRouter>
       <Provider value={{ addedTracks, setAddedTracks }}>
-        <div className="app">
-          <Header />
-          <section className="page-content">
-            <p className="page-content__text">
-              SoundTracker - это интерфейс Shazam API, где можно посмотреть
-              чарты по городам мира
-            </p>
-            <div className="bookmarks">
-              <Bookmark className="bookmark" text="Смотреть чарты" />
-              <Bookmark className="bookmark" text="Добавленные треки" />
-            </div>
-            <Routes>
-              <Route exact path="/" element={<Charts />} />
-              <Route path="/library" element={<Library />} />
-            </Routes>
-          </section>
-        </div>
+        <BurgerButtonProvider
+          value={{ isBurgerButtonActive, setIsBurgerButtonActive }}
+        >
+          <div className="app">
+            <Header />
+            <section className="page-content">
+              {isBurgerButtonActive ? <NavMenu /> : null}
+              <p className="page-content__text">
+                SoundTracker - это интерфейс Shazam API, где можно посмотреть
+                чарты по городам мира
+              </p>
+              <Routes>
+                <Route exact path="/STRO" element={<Charts />} />
+                <Route path="/library" element={<Library />} />
+              </Routes>
+            </section>
+          </div>
+        </BurgerButtonProvider>
       </Provider>
     </BrowserRouter>
   );
